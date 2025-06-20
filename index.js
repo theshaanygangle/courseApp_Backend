@@ -1,16 +1,23 @@
 const express = require ("express");
 const jwt = require ("jsonwebtoken");
 const mongoose = require("mongoose");
-const {createUserRoutes} = require ("./user");
-const {createCoursesRoutes} = require ("./course");
+const {userRouter} = require ("./routes/user");
+const {courseRouter} = require ("./routes/course");
+
+//MongoDB Connection 
+const { connectDB } = require('./db'); // Import DB connection
+const { adminRouter } = require("./routes/admin");
+require('dotenv').config();
 
 const app =  express();
+const PORT = process.env.PORT || 3000;  // .env will do it's processes at PORT : 3000
 
+connectDB(); // Call DB connection
 
-createUserRoutes(app);
-createCoursesRoutes(app);
+app.use("/api/v1/user", userRouter);
+app.use("/api/v1/course", courseRouter);
+app.use("/api/v1/admin", adminRouter);
 
-
-
-
-app.listern(3000);
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
+});

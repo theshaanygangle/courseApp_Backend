@@ -1,16 +1,20 @@
+const { Router } = require("express");
+const {userModel} = require ("../db.js");
+const userRouter = Router();
 
-function createUserRoutes(app) {
-      app.post("/user/signup", function (req,res){
 
+userRouter.post("/signup", function(req,res){
+      res.json({
+            message : "You Are Signed Up!"
+      })
+}) 
+userRouter.post("/signin", function(req,res){
+      res.json({
+            message : "You Are Signed In!"
+      })
 })
 
-app.post("/user/signin", function (req,res){
-      
-})
 
-}
-
-
-modules.express ={
-      createUserRoutes  : createUserRoutes,
+module.exports = {
+      userRouter : userRouter,
 }
