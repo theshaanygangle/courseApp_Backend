@@ -1,4 +1,4 @@
-# 🎓 CourseApp Backend
+# 🎓 CourseApp (Backend)
 
 Backend for a **Course Selling Platform** built using Node.js, Express.js, MongoDB, JWT, Zod, and Bcrypt. 
 It supports user and admin authentication, course management, and purchase handling.
